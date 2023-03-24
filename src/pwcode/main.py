@@ -15,8 +15,8 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=5)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler = RotatingFileHandler("app.log", maxBytes=10000, backupCount=5)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
@@ -28,8 +28,8 @@ __path = Path(os.path.join(gettempdir(), "pwclatest.json"))
 async def background_check():
     while True:
         config.look_for_changes()
-        logger.info("Updated the file.")
-        
+        logger.info("Updates Check Done")
+
         await asyncio.sleep(randint(12, 18) * 3600)
 
 
@@ -43,7 +43,7 @@ async def startup_event():
 def latest():
     with open(__path, "r", encoding="utf-8") as file:
         data = jsonload(file)
-    
+
     logger.info("JSON file pwclatest.json loaded successfully.")
     return data
 
