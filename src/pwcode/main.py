@@ -6,6 +6,7 @@ from pathlib import Path
 from random import randint
 from tempfile import gettempdir
 from utils.ConfigReader import ConfigReader
+from utils.WebReader import WebReader
 from api.Paper import Paper
 
 from fastapi import FastAPI
@@ -22,7 +23,7 @@ logger.addHandler(handler)
 
 app = FastAPI()
 config = ConfigReader()
-__path = Path(os.path.join(gettempdir(), "pwclatest.json"))
+reader = WebReader()
 
 
 async def background_check():
@@ -43,10 +44,16 @@ async def startup_event():
 
 @app.get("/latest")
 def latest():
+    if reader.get_lock():
+        filename = "pwclatest_old.json"
+    else:
+        filename = "pwclatest.json"
+
+    __path = Path(os.path.join(gettempdir(), filename))
     with open(__path, "r", encoding="utf-8") as file:
         data = jsonload(file)
 
-    logger.info("JSON file pwclatest.json loaded successfully.")
+    logger.info("JSON file %s loaded successfully.", filename)
     return data
 
 

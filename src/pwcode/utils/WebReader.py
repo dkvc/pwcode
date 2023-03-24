@@ -1,5 +1,6 @@
 import json
 from logging.handlers import RotatingFileHandler
+import shutil
 from typing import List
 from api.Paper import Paper
 
@@ -23,6 +24,8 @@ logger.addHandler(handler)
 
 class WebReader:
     """Class that reads latest papers from pwcode"""
+
+    __lock = False
 
     def __get_url(self, page: int):
         __url = f"https://paperswithcode.com/latest?page={page}"
@@ -89,6 +92,8 @@ class WebReader:
             logger.info("IDs written to pwclatestids.json")
 
             __path = Path(os.path.join(gettempdir(), "pwclatest.json"))
+            __lock = True
+            shutil.copy(__path, Path(os.path.join(gettempdir(), "pwclatest_old.json")))
 
             data = {"papers": []}
             for id in latest:
@@ -97,6 +102,8 @@ class WebReader:
                 with open(__path, "w", encoding="utf-8") as file:
                     json.dump(data, file, skipkeys=True, indent=4)
             logger.info("Latest Papers written to pwclatest.json")
+
+            __lock = False
 
             __path = Path(os.path.join(gettempdir(), "pwcids.json"))
 
@@ -107,3 +114,6 @@ class WebReader:
         except PermissionError:
             print("Error: Permission denied. Please check temp directory permissions.")
             sys.exit(1)
+
+    def get_lock(self):
+        return self.__lock
