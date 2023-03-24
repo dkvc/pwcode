@@ -8,10 +8,11 @@ from typing import List, Union
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = RotatingFileHandler('app.log', maxBytes=10485760, backupCount=5)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler = RotatingFileHandler("app.log", maxBytes=10485760, backupCount=5)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
+
 
 @dataclass
 class Paper:
@@ -41,9 +42,7 @@ class Paper:
         paper_keys, paper_git_keys = paper.keys(), paper_git.keys()
 
         self.title = paper["title"] if "title" in paper_keys else None
-        self.published = (
-            paper["published"] if "published" in paper_keys else None
-        )
+        self.published = paper["published"] if "published" in paper_keys else None
 
         self.authors = paper["authors"] if "authors" in paper_keys else None
         self.abstract = paper["abstract"] if "abstract" in paper_keys else None
@@ -54,7 +53,7 @@ class Paper:
         self.framework = (
             paper_git["framework"] if "framework" in paper_git_keys else None
         )
-        
+
         logger.info("All fields of Paper %s are initialized.", self.id)
 
     def to_json(self):

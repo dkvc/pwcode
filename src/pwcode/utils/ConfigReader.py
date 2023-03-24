@@ -11,8 +11,8 @@ import sys
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=5)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler = RotatingFileHandler("app.log", maxBytes=10000, backupCount=5)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
@@ -49,7 +49,7 @@ class ConfigReader:
             with open(self.__path, "w", encoding="utf-8") as file:
                 json.dump(config, file, skipkeys=True, indent=4)
             logger.info("Config dumped to ~/.gpkgconfig")
-                
+
         except PermissionError:
             print(
                 "Error: Permission Denied. Please check your home directory permissions."

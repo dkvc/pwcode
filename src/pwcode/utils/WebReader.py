@@ -15,13 +15,15 @@ import sys
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=5)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler = RotatingFileHandler("app.log", maxBytes=10000, backupCount=5)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
+
 class WebReader:
     """Class that reads latest papers from pwcode"""
+
     def __get_url(self, page: int):
         __url = f"https://paperswithcode.com/latest?page={page}"
         logger.info("URL selected: %s", __url)
@@ -67,7 +69,6 @@ class WebReader:
             sys.exit(1)
 
     def cache_exists(self, path: Path):
-        logger.info("File %s already exists", path)
         return path.exists() and path.is_file()
 
     def __create_empty_cache(self, path):
@@ -102,7 +103,7 @@ class WebReader:
             with open(__path, "w", encoding="utf-8") as file:
                 file.writelines([id + "\n" for id in original + latest])
             logger.info("Latest Papers written to pwcids.json")
-            
+
         except PermissionError:
             print("Error: Permission denied. Please check temp directory permissions.")
             sys.exit(1)
