@@ -1,8 +1,20 @@
+from logging.handlers import RotatingFileHandler
+
 from pathlib import Path
+from utils.WebReader import WebReader
 
 import json
+import logging
 import requests
 import sys
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=5)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class ConfigReader:
@@ -18,7 +30,7 @@ class ConfigReader:
     def __exists(self):
         __path = self.__path
         if not (__path.exists() and __path.is_file):
-            print("File doesn't exist.")
+            logger.info("File doesn't exist.")
             return False
 
         try:
@@ -31,25 +43,34 @@ class ConfigReader:
         return True
 
     def __autocreate(self):
+        logger.info("Config is being updated/created")
         config = {"papers": self.papers}
         try:
-            with open(self._path, "w", encoding="utf-8") as file:
+            with open(self.__path, "w", encoding="utf-8") as file:
                 json.dump(config, file, skipkeys=True, indent=4)
+            logger.info("Config dumped to ~/.gpkgconfig")
+                
         except PermissionError:
             print(
                 "Error: Permission Denied. Please check your home directory permissions."
             )
             sys.exit(1)
 
-    async def look_for_changes(self):
+    def look_for_changes(self):
         if not self.__exists():
             self.__autocreate()
 
         with open(self.__path, encoding="utf-8") as file:
             data = json.load(file)
+        logger.info("~/.gpkgconfig loaded successfully")
 
-        papers = await requests.get("https://paperswithcode.com/api/v1/papers/").json()
+        papers = requests.get("https://paperswithcode.com/api/v1/papers/").json()
         self.papers = papers["count"]
-        if value := self.papers > data["papers"]:
-            # TODO: Temporary Link
-            read_web(pages=value // 10)
+        reader = WebReader()
+
+        if self.papers > data["papers"]:
+            logger.info("Update for Latest Papers requested")
+            reader.get_papers(pages=(self.papers - data["papers"]) // 10)
+            self.__autocreate()
+        else:
+            logger.info("Nothing to update.")
