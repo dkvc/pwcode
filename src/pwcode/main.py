@@ -1,22 +1,22 @@
 import asyncio
+import logging
 import os
 
+from fastapi import FastAPI
 from json import load as jsonload
 from pathlib import Path
 from random import randint
 from tempfile import gettempdir
+
+from api.Paper import Paper
 from utils.ConfigReader import ConfigReader
 from utils.WebReader import WebReader
-from api.Paper import Paper
-
-from fastapi import FastAPI
 from logging.handlers import RotatingFileHandler
-import logging
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = RotatingFileHandler("app.log", maxBytes=10000, backupCount=5)
+handler = RotatingFileHandler("app.log", maxBytes=10485760, backupCount=5)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)

@@ -1,12 +1,12 @@
-from logging.handlers import RotatingFileHandler
-
-from pathlib import Path
-from utils.WebReader import WebReader
-
 import json
 import logging
 import requests
 import sys
+
+from pathlib import Path
+
+from utils.WebReader import WebReader
+from logging.handlers import RotatingFileHandler
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)

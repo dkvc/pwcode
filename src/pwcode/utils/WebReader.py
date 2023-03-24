@@ -1,17 +1,17 @@
 import json
-from logging.handlers import RotatingFileHandler
+import logging
+import os
+import requests
 import shutil
-from typing import List
-from api.Paper import Paper
+import sys
 
 from bs4 import BeautifulSoup
 from pathlib import Path
 from tempfile import gettempdir
+from typing import List
 
-import logging
-import os
-import requests
-import sys
+from api.Paper import Paper
+from logging.handlers import RotatingFileHandler
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)

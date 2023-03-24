@@ -1,9 +1,10 @@
 import logging
-from logging.handlers import RotatingFileHandler
 import requests
 
 from dataclasses import dataclass, field
 from typing import List, Union
+
+from logging.handlers import RotatingFileHandler
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
