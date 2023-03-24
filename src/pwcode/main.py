@@ -30,7 +30,9 @@ async def background_check():
         config.look_for_changes()
         logger.info("Updates Check Done")
 
-        await asyncio.sleep(randint(12, 18) * 3600)
+        sleep_time = randint(12, 18)
+        logger.info("Next Update Check: %s hrs from now", sleep_time)
+        await asyncio.sleep(sleep_time * 3600)
 
 
 @app.on_event("startup")
