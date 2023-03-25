@@ -5,7 +5,7 @@ USER dev
 
 WORKDIR /home/dev/
 
-COPY requirements.txt requirements.txt
+COPY dev-reqs.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 LABEL name="pwcode"
