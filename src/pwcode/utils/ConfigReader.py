@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import requests
 import sys
 
@@ -24,8 +25,12 @@ class ConfigReader:
     papers: int
 
     def __init__(self):
-        self.__path = Path.expanduser(Path("~/.pwconfig"))
         self.papers = 0
+
+        if "XDG_CONFIG_HOME" in os.environ:
+            self.__path = Path(os.environ["XDG_CONFIG_HOME"]).joinpath(".pwconfig")
+        else:
+            self.__path = Path.expanduser(Path("~/.config/.pwconfig"))
 
     def __exists(self):
         __path = self.__path
