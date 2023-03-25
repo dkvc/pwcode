@@ -15,8 +15,7 @@ authors = [
 ]
 
 maintainers = [
-    {name = "Aakash Jammula"},
-    {name = "Komal Sai Anurag Pasumarthy"}
+    {name = "Aakash Jammula"}
 ]
 
 keywords = [
