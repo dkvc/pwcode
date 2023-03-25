@@ -16,7 +16,7 @@ from logging.handlers import RotatingFileHandler
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = RotatingFileHandler("app.log", maxBytes=10000, backupCount=5)
+handler = RotatingFileHandler("app.log", maxBytes=10485760, backupCount=5)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
