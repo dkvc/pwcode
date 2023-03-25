@@ -37,6 +37,7 @@ class WebReader:
             pages = 5
 
         latest = []
+        cache = self.ids(Path(os.path.join(gettempdir(), "pwcids.json")))
 
         for page in range(1, pages + 1):
             response = requests.get(self.__get_url(page))
@@ -45,7 +46,6 @@ class WebReader:
 
             soup = BeautifulSoup(content, "html.parser")
             papers = soup.find_all("div", {"class": "col-lg-9 item-content"})
-            cache = self.ids(Path(os.path.join(gettempdir(), "pwcids.json")))
 
             for paper in papers:
                 paper_id = paper.find("a")["href"].split("/")[-1]
@@ -53,8 +53,8 @@ class WebReader:
                     break
                 latest.append(paper_id)
 
-            logger.info("Number of latest papers: %s", len(latest))
-            self.__store_latest(latest, cache)
+        logger.info("Number of latest papers: %s", len(latest))
+        self.__store_latest(latest, cache)
 
         return latest
 
