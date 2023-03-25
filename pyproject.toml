@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pwcode"
+description = "Get Latest Updates from PapersWithCode"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "Apache-2.0"}
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+authors = [
+    {name = "Dhanush Kovi"}
+]
+
+maintainers = [
+    {name = "Aakash Jammula"},
+    {name = "Komal Sai Anurag Pasumarthy"}
+]
+
+keywords = [
+    "pwcode",
+    "PapersWithCode",
+    "pwcode-latest",
+    "ml-papers",
+    "ml-research",
+    "machine-learning",
+    "artificial-intelligence",
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: FastAPI",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+Repository = "https://github.com/dkvc/pwcode"
+
+[tool.setuptools.dynamic]
+version = {attr = "pwcode.__version__"}
+dependencies = {file = "requirements.txt"}
+optional-dependencies.dev = {file = "dev-reqs.txt"}

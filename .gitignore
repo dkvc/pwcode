@@ -130,3 +130,6 @@ dmypy.json
 
 # PyTest stuff.
 .pytest_cache/
+
+# Logs
+*log.*
