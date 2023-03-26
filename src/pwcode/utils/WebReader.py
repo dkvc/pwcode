@@ -92,8 +92,12 @@ class WebReader:
             logger.info("IDs written to pwclatestids.json")
 
             __path = Path(os.path.join(gettempdir(), "pwclatest.json"))
+
             __lock = True
-            shutil.copy(__path, Path(os.path.join(gettempdir(), "pwclatest_old.json")))
+            if os.path.exists(__path):
+                shutil.copy(
+                    __path, Path(os.path.join(gettempdir(), "pwclatest_old.json"))
+                )
 
             data = {"papers": []}
             for id in latest:
