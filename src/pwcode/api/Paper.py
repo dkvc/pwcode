@@ -35,8 +35,21 @@ class Paper:
         self.pwc_url = f"https://paperswithcode.com/paper/{self.id}"
 
         api_url = f"https://paperswithcode.com/api/v1/papers/{self.id}"
-        paper = requests.get(api_url).json()
-        paper_git = requests.get(api_url + "/repositories/").json()
+        headers = {"accept": "application/json"}
+
+        paper = requests.get(api_url, headers=headers)
+        if paper.status_code == 200:
+            paper = paper.json()
+        else:
+            logger.info("Error: %s for %s", paper.status_code, api_url)
+
+        paper_git = requests.get(api_url + "/repositories/", headers=headers)
+        if paper_git.status_code == 200:
+            paper_git = paper_git.json()
+        else:
+            logger.info(
+                "Error: %s for %s", paper_git.status_code, api_url + "/repositories/"
+            )
         logger.info("URLs called successfully.")
 
         paper_git = paper_git["results"][0] if "results" in paper_git.keys() else {}
