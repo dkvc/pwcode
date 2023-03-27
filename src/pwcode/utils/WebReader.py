@@ -54,7 +54,8 @@ class WebReader:
                 latest.append(paper_id)
 
         logger.info("Number of latest papers: %s", len(latest))
-        self.__store_latest(latest, cache)
+        if len(latest) != 0:
+            self.__store_latest(latest, cache)
 
         return latest
 
