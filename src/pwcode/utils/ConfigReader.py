@@ -53,7 +53,7 @@ class ConfigReader:
         try:
             with open(self.__path, "w", encoding="utf-8") as file:
                 json.dump(config, file, skipkeys=True, indent=4)
-            logger.info("Config dumped to ~/.gpkgconfig")
+            logger.info("Config dumped to %s", self.__path)
 
         except PermissionError:
             print(
@@ -67,7 +67,7 @@ class ConfigReader:
 
         with open(self.__path, encoding="utf-8") as file:
             data = json.load(file)
-        logger.info("~/.gpkgconfig loaded successfully")
+        logger.info("%s loaded successfully", self.__path)
 
         papers = requests.get("https://paperswithcode.com/api/v1/papers/").json()
         self.papers = papers["count"]
