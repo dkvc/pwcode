@@ -75,7 +75,10 @@ class ConfigReader:
 
         if self.papers > data["papers"]:
             logger.info("Update for Latest Papers requested")
-            reader.get_papers(pages=(self.papers - data["papers"]) // 10)
+            pages = (self.papers - data["papers"]) // 10
+
+            logger.info("%s pages requested", pages)
+            reader.get_papers(pages=pages)
             self.__autocreate()
         else:
             logger.info("Nothing to update.")
