@@ -133,3 +133,6 @@ dmypy.json
 
 # Logs
 *log.*
+
+# RSS XML files
+rss*.xml
