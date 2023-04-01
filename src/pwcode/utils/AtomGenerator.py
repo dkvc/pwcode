@@ -11,6 +11,7 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
+
 def generate_atom(papers):
     time = pendulum.now().to_atom_string()
     atom = """\
@@ -66,9 +67,10 @@ def generate_atom(papers):
     logger.info("Atom Feed generated at %s", time)
     return atom
 
+
 def store_atom(papers):
     with open("atom.xml", "w") as file:
         xml_content = generate_atom(papers)
         file.write(xml_content)
-    
+
     logger.info("atom.xml is generated")

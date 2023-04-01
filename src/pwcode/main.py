@@ -77,13 +77,13 @@ async def rss():
     logger.info("RSS File is being read.")
     return Response(content=xml_content, media_type="application/rss+xml")
 
+
 @app.get("/atom.xml", summary="Atom Feed for latest papers")
 @app.get("/atom", summary="Atom Feed for latest papers")
 @app.get("/.atom", summary="Atom Feed for latest papers")
 async def atom():
     with open("atom.xml", "r") as file:
         xml_content = file.read()
-        
+
     logger.info("Atom File is being read.")
     return Response(content=xml_content, media_type="application/atom+xml")
-

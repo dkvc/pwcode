@@ -67,5 +67,5 @@ def store_rss(papers):
     with open("rss.xml", "w") as file:
         xml_content = generate_rss(papers)
         file.write(xml_content)
-    
+
     logger.info("rss.xml is generated")
