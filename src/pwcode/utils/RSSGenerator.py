@@ -59,7 +59,7 @@ def generate_rss(papers):
 
     rss += "\n</channel>\n</rss>"
 
-    logging.info("RSS Feed generated at %s", time)
+    logger.info("RSS Feed generated at %s", time)
     return rss
 
 
@@ -68,4 +68,4 @@ def store_rss(papers):
         xml_content = generate_rss(papers)
         file.write(xml_content)
     
-    logging.info("rss.xml is generated")
+    logger.info("rss.xml is generated")
