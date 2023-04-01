@@ -12,6 +12,7 @@ from api.Paper import Paper
 from utils.ConfigReader import ConfigReader
 from utils.WebReader import WebReader
 from utils.RSSGenerator import store_rss
+from utils.AtomGenerator import store_atom
 from logging.handlers import RotatingFileHandler
 
 logger = logging.getLogger(__name__)
@@ -31,6 +32,8 @@ async def background_check():
     while True:
         config.look_for_changes()
         store_rss(latest()["papers"])
+        store_atom(latest()["papers"])
+
         logger.info("Updates Check Done")
 
         sleep_time = randint(6, 12)
@@ -67,8 +70,20 @@ def get_paper(paper: str):
 
 @app.get("/rss.xml", summary="RSS Feed for latest papers")
 @app.get("/rss", summary="RSS Feed for latest papers")
+@app.get("/.rss", summary="RSS Feed for latest papers")
 async def rss():
     with open("rss.xml", "r") as file:
         xml_content = file.read()
     logger.info("RSS File is being read.")
-    return Response(content=xml_content, media_type="application/xml")
+    return Response(content=xml_content, media_type="application/rss+xml")
+
+@app.get("/atom.xml", summary="Atom Feed for latest papers")
+@app.get("/atom", summary="Atom Feed for latest papers")
+@app.get("/.atom", summary="Atom Feed for latest papers")
+async def atom():
+    with open("atom.xml", "r") as file:
+        xml_content = file.read()
+        
+    logger.info("Atom File is being read.")
+    return Response(content=xml_content, media_type="application/atom+xml")
+
