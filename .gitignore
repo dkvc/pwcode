@@ -133,3 +133,7 @@ dmypy.json
 
 # Logs
 *log.*
+
+# RSS & Atom XML files
+rss*.xml
+atom*.xml
