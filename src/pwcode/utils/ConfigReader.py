@@ -26,7 +26,7 @@ class ConfigReader:
 
     def __init__(self):
         self.papers = 0
-        self.__path = '.pwconfig'
+        self.__path = Path(os.path.join(Path.cwd(), ".pwconfig"))
 
     def __exists(self):
         __path = self.__path
