@@ -7,7 +7,6 @@ import sys
 
 from bs4 import BeautifulSoup
 from pathlib import Path
-from tempfile import gettempdir
 from typing import List
 
 from pwcode.api.Paper import Paper
@@ -37,7 +36,7 @@ class WebReader:
             pages = 5
 
         latest = []
-        cache = self.ids(Path(os.path.join(gettempdir(), "pwcids.json")))
+        cache = self.ids(Path(os.path.join(Path.cwd(), "pwcids.json")))
 
         for page in range(1, pages + 1):
             response = requests.get(self.__get_url(page))
@@ -85,19 +84,19 @@ class WebReader:
             sys.exit(1)
 
     def __store_latest(self, latest: List[str], original: List[str]):
-        __path = Path(os.path.join(gettempdir(), "pwclatestids.json"))
+        __path = Path(os.path.join(Path.cwd(), "pwclatestids.json"))
 
         try:
             with open(__path, "w", encoding="utf-8") as file:
                 file.writelines([id + "\n" for id in latest])
             logger.info("IDs written to pwclatestids.json")
 
-            __path = Path(os.path.join(gettempdir(), "pwclatest.json"))
+            __path = Path(os.path.join(Path.cwd(), "pwclatest.json"))
 
             __lock = True
             if os.path.exists(__path):
                 shutil.copy(
-                    __path, Path(os.path.join(gettempdir(), "pwclatest_old.json"))
+                    __path, Path(os.path.join(Path.cwd(), "pwclatest_old.json"))
                 )
 
             data = {"papers": []}
@@ -110,7 +109,7 @@ class WebReader:
 
             __lock = False
 
-            __path = Path(os.path.join(gettempdir(), "pwcids.json"))
+            __path = Path(os.path.join(Path.cwd(), "pwcids.json"))
 
             with open(__path, "w", encoding="utf-8") as file:
                 file.writelines([id + "\n" for id in original + latest])

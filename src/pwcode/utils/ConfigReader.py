@@ -26,11 +26,7 @@ class ConfigReader:
 
     def __init__(self):
         self.papers = 0
-
-        if "XDG_CONFIG_HOME" in os.environ:
-            self.__path = Path(os.environ["XDG_CONFIG_HOME"]).joinpath(".pwconfig")
-        else:
-            self.__path = Path.expanduser(Path("~/.config/.pwconfig"))
+        self.__path = '.pwconfig'
 
     def __exists(self):
         __path = self.__path

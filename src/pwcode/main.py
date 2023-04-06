@@ -4,9 +4,7 @@ import os
 
 from fastapi import FastAPI, Response
 from json import load as jsonload
-from pathlib import Path
 from random import randint
-from tempfile import gettempdir
 
 from pwcode.api.Paper import Paper
 from pwcode.utils.ConfigReader import ConfigReader
@@ -54,8 +52,7 @@ def latest():
     else:
         filename = "pwclatest.json"
 
-    __path = Path(os.path.join(gettempdir(), filename))
-    with open(__path, "r", encoding="utf-8") as file:
+    with open(filename, "r", encoding="utf-8") as file:
         data = jsonload(file)
 
     logger.info("JSON file %s loaded successfully.", filename)
