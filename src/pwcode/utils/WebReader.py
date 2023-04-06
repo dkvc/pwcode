@@ -10,7 +10,7 @@ from pathlib import Path
 from tempfile import gettempdir
 from typing import List
 
-from api.Paper import Paper
+from pwcode.api.Paper import Paper
 from logging.handlers import RotatingFileHandler
 
 logger = logging.getLogger(__name__)
