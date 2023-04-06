@@ -8,11 +8,11 @@ from pathlib import Path
 from random import randint
 from tempfile import gettempdir
 
-from api.Paper import Paper
-from utils.ConfigReader import ConfigReader
-from utils.WebReader import WebReader
-from utils.RSSGenerator import store_rss
-from utils.AtomGenerator import store_atom
+from pwcode.api.Paper import Paper
+from pwcode.utils.ConfigReader import ConfigReader
+from pwcode.utils.WebReader import WebReader
+from pwcode.utils.RSSGenerator import store_rss
+from pwcode.utils.AtomGenerator import store_atom
 from logging.handlers import RotatingFileHandler
 
 logger = logging.getLogger(__name__)

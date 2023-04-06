@@ -6,7 +6,7 @@ import sys
 
 from pathlib import Path
 
-from utils.WebReader import WebReader
+from pwcode.utils.WebReader import WebReader
 from logging.handlers import RotatingFileHandler
 
 logger = logging.getLogger(__name__)
