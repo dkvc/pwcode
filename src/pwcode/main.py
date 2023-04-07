@@ -64,8 +64,8 @@ def latest():
 
 @app.get("/status", summary="Health check", status_code=200)
 def status():
-    endpoint_status = 'Endpoint healthy, 200 OK'
-    logger.info(f'{status}', filename)
+    endpoint_status = "Endpoint healthy, 200 OK"
+    logger.info(f"{status}", filename)
     return endpoint_status
 
 
