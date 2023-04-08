@@ -59,6 +59,13 @@ def latest():
     return data
 
 
+@app.get("/status", summary="Health check", status_code=200)
+def status():
+    endpoint_status = "OK"
+    logger.info(endpoint_status)
+    return endpoint_status
+
+
 @app.get("/paper/{paper}", summary="Get details of paper")
 def get_paper(paper: str):
     logger.info("GET: Paper %s", paper)
