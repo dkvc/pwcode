@@ -6,3 +6,31 @@ This module allows you to deploy your own local server that retrieves latest Pap
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/dkvc/pwcode/main.svg)](https://results.pre-commit.ci/latest/github/dkvc/pwcode/main)
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000)](https://github.com/psf/black)
+
+## Usage
+
+To add the PapersWithCode feed to your feeder app, follow these steps:
+
+1. Choose the format you want to use for the feed:
+    - JSON
+    - RSS
+    - Atom
+2. Add the feed URL to your app
+
+## Setting up Local Dev Environment
+
+To set up the local development environment locally, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Install the required dependencies by running:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Credits
+
+This project is made possible by :
+
+- PapersWithCode own API
+- FastAPI
