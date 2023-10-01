@@ -12,8 +12,10 @@ This module allows you to deploy your own local server that retrieves latest Pap
 To add the PapersWithCode feed to your feeder app, follow these steps:
 
 1. Choose the format you want to use for the feed:
-   - [RSS](https://pwcode.onrender.com/rss)
-   - [Atom](https://pwcode.onrender.com/atom)
+
+   [![Rss](https://img.shields.io/badge/rss-F88900?style=for-the-badge&logo=rss&logoColor=white)](https://pwcode.onrender.com/rss)
+
+   [![Atom](https://img.shields.io/badge/Atom-%2366595C.svg?style=for-the-badge&logo=atom&logoColor=white)](https://pwcode.onrender.com/atom)
 2. Add the feed URL to your app
 
 ## Setting up Local Dev Environment
@@ -21,7 +23,8 @@ To add the PapersWithCode feed to your feeder app, follow these steps:
 To set up the local development environment locally, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Install the required dependencies by running:
+2. Create a python virtual environment (venv).
+2. Install the required dependencies in venv by running:
 
 ```bash
 pip install -r requirements.txt
