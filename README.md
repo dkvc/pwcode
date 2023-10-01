@@ -12,9 +12,8 @@ This module allows you to deploy your own local server that retrieves latest Pap
 To add the PapersWithCode feed to your feeder app, follow these steps:
 
 1. Choose the format you want to use for the feed:
-    - JSON
-    - RSS
-    - Atom
+   - [RSS](https://pwcode.onrender.com/rss)
+   - [Atom](https://pwcode.onrender.com/atom)
 2. Add the feed URL to your app
 
 ## Setting up Local Dev Environment
