@@ -1,15 +1,15 @@
 # PapersWithCode Latest (pwcode)
 
+<h3>There will be no major updates for this project. Only security updates and bug fixes will be provided. The deployment will be continue running on Render until another solution is found.</h3>
+
 ## Get Latest Updates from PapersWithCode
 
-This module allows you to deploy your own local server that retrieves latest PapersWithCode papers. You can also use web server hosted by us on [Render](https://pwcode.onrender.com/latest). The information can be retrieved in the form of [JSON](https://pwcode.onrender.com/latest), [RSS](https://pwcode.onrender.com/rss) or [Atom](https://pwcode.onrender.com/atom) feeds. All formats consist of the same data and are updated at the same time.
+This repository contains code for deployment of your own local server that retrieves latest PapersWithCode papers. You can also use web server hosted by us on [Render](https://pwcode.onrender.com/latest). The information can be retrieved in the form of [JSON](https://pwcode.onrender.com/latest), [RSS](https://pwcode.onrender.com/rss) or [Atom](https://pwcode.onrender.com/atom) feeds. Data is updated in all formats at same time.
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/dkvc/pwcode/main.svg)](https://results.pre-commit.ci/latest/github/dkvc/pwcode/main)
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000)](https://github.com/psf/black)
 
 ## Usage
-
-To add the PapersWithCode feed to your feeder app, follow these steps:
 
 1. Choose the format you want to use for the feed:
 
@@ -32,7 +32,12 @@ pip install -r requirements.txt
 
 ## Credits
 
-This project is made possible by :
+The development of this project would not have been possible without:
 
-- PapersWithCode own API
-- FastAPI
+- [PapersWithCode API](https://paperswithcode.com/api/v1/docs/)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [BS4](https://www.crummy.com/software/BeautifulSoup/)
+
+## Future of the Project
+
+The future of this project is uncertain (as of Oct 09, 2023), since this involves both web scraping and API calls, which is extremely inefficient. Considering deployment on Render takes long time to start up after every wake up call and chaotic web of code for deployment, it is quite possible that this project might no longer be developed.
