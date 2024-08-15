@@ -37,7 +37,3 @@ The development of this project would not have been possible without:
 - [PapersWithCode API](https://paperswithcode.com/api/v1/docs/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [BS4](https://www.crummy.com/software/BeautifulSoup/)
-
-## Future of the Project
-
-The future of this project is uncertain (as of Oct 09, 2023), since this involves both web scraping and API calls, which is extremely inefficient. Considering deployment on Render takes long time to start up after every wake up call and chaotic web of code for deployment, it is quite possible that this project might no longer be developed.
