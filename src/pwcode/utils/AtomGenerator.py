@@ -25,9 +25,7 @@ def generate_atom(papers):
     <author>
         <name>PapersWithCode</name>
     </author>
-""".format(
-        time
-    )
+""".format(time)
 
     for paper in papers:
         content = """<![CDATA[<b>ID:</b> {}<br>

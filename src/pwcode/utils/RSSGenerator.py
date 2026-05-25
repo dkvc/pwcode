@@ -24,9 +24,7 @@ def generate_rss(papers):
     <description>Get Latest Papers from PapersWithCode</description>
     <language>en</language>
     <lastBuildDate>{}</lastBuildDate>
-""".format(
-        time
-    )
+""".format(time)
 
     for paper in papers:
         description = """<![CDATA[<b>ID:</b> {}<br>
