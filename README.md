@@ -1,6 +1,6 @@
 # PapersWithCode Latest (pwcode)
 
-<h3>There will be no major updates for this project. Only security updates and bug fixes will be provided. The deployment will be continue running on Render until another solution is found.</h3>
+<h3>Update: PapersWithCode is no longer officially available. This repository is archived.</h3>
 
 ## Get Latest Updates from PapersWithCode
 
